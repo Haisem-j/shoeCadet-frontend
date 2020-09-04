@@ -1,0 +1,115 @@
+//Ipad or Tablet view
+@media only screen and (max-width: 768px) {
+    .howItWorks{
+        height: 130vh;
+        margin-top: -10px;
+        margin-bottom: -10px;
+        background-color: #cde8ff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: #0362b0;
+
+        .heading-howItWorks{
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            img{
+                width: 150px;
+            }
+        }
+        .how-containers{
+            margin: 0 25px;
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            justify-content: space-around;
+
+            .item-container {
+
+
+                .card {
+                    margin-top: 20px;
+                    border-radius: 20px;
+                    background: #0362b0;
+                    height: auto;
+                    width: 200px;
+                    padding: 10px;
+                }
+
+                p {
+                    color: white;
+                    text-align: center;
+                    font-weight: 500;
+                    font-size: small;
+                }
+            }
+
+            img{
+                margin-top: -30px;
+                height: 80px;
+            }
+        }
+    }
+}
+
+//Desktop view
+@media only screen and (min-width: 769px) {
+    .howItWorks {
+        height: 120vh;
+        margin-top: -10px;
+        background-color: #cde8ff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #0362b0;
+
+        .heading-howItWorks {
+            height: 20%;
+            width: 100%;
+            font-size: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            img {
+                width: 250px;
+            }
+        }
+
+        .how-containers {
+            height: 80%;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding-left: 150px;
+            padding-right: 150px;
+            .item-container {
+                width: 20%;
+
+                .card {
+                    border-radius: 20px;
+                    background: #0362b0;
+                    height: 110px;
+                    width: 250px;
+                    padding: 10px;
+                }
+
+                p {
+                    color: white;
+                    text-align: center;
+                    font-weight: 500;
+                }
+            }
+            img {
+                height: 200px;
+                margin-top: -200px;
+                margin-bottom: 50px;
+            }
+        }
+    }
+}

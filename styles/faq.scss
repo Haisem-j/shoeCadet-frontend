@@ -1,0 +1,82 @@
+//Ipad or Tablet view
+@media only screen and (max-width: 768px) {
+    .FAQ {
+        height: 100vh;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+        margin-left: 25px;
+        margin-right: 25px;
+
+        .heading-faq{
+            height: 20%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: -40px;
+            h1 {
+                font-size: 9vw;
+            }
+        }
+
+        .questions-container {
+            .question-card {
+                h3 {
+                    font-size: 5vw;
+                    margin-bottom: 20px;
+                }
+                margin-bottom: 30px;
+            }
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+    }
+}
+
+//Desktop view
+@media only screen and (min-width: 769px) {
+    .FAQ {
+        height: 90vh;
+        color: white;
+        padding-left: 150px;
+        padding-right: 150px;
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px;
+
+        .heading-faq {
+            height: 20%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            h1 {
+                font-size: 3.5vw;
+            }
+            #arrow-faq {
+                margin-top: -30px;
+            }
+        }
+
+        .questions-container {
+            .question-card {
+                h3 {
+                    font-size: 2vw;
+                    margin-bottom: 20px;
+                }
+                margin-bottom: 40px;
+            }
+        }
+
+        h2 {
+            margin-top: 30px;
+            text-align: center;
+        }
+    }
+}

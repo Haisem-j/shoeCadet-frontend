@@ -1,0 +1,212 @@
+@media only screen and (max-width: 600px) {
+}
+
+@media only screen and (min-width: 600px) {
+}
+
+//Ipad or Tablet view
+@media only screen and (max-width: 768px) {
+  //Whole landing page
+  .landing-page {
+    height: 100vh;
+  }
+  nav {
+    height: 8%;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #023e6f;
+
+    #logo {
+      height: 70px;
+      width: 70px;
+      margin-left: 20px;
+    }
+
+    #discord-menu-mobile {
+      height: 100px;
+    }
+
+    #menuLink {
+      height: 30px;
+      margin-right: 20px;
+    }
+
+    ul {
+      display: none;
+    }
+
+    .overlay {
+      /* Height & width depends on how you want to reveal the overlay (see JS below) */
+      height: 0;
+      width: 100%;
+      position: fixed; /* Stay in place */
+      z-index: 2; /* Sit on top */
+      left: 0;
+      top: 0;
+      background-color: rgb(0, 0, 0); /* Black fallback color */
+      background-color: rgba(0, 0, 0, 0.9); /* Black w/opacity */
+      overflow-x: hidden; /* Disable horizontal scroll */
+      transition: 0.5s; /* 0.5 second transition effect to slide in or slide down the overlay (height or width, depending on reveal) */
+    }
+
+    /* Position the content inside the overlay */
+    .overlay-content {
+      position: relative;
+      top: 25%; /* 25% from the top */
+      width: 100%; /* 100% width */
+      text-align: center; /* Centered text/links */
+      margin-top: 30px; /* 30px top margin to avoid conflict with the close button on smaller screens */
+    }
+
+    /* The navigation links inside the overlay */
+    .overlay a {
+      padding: 8px;
+      text-decoration: none;
+      font-size: 36px;
+      color: #818181;
+      display: block; /* Display block instead of inline */
+      transition: 0.3s; /* Transition effects on hover (color) */
+    }
+
+    /* When you mouse over the navigation links, change their color */
+    .overlay a:hover,
+    .overlay a:focus {
+      color: #f1f1f1;
+    }
+
+    .overlay .closebtn {
+      position: absolute;
+      top: -8px;
+      right: 10px;
+      font-size: 70px;
+    }
+  }
+
+  //Landing Section
+  .content {
+    height: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 25px;
+    color: white;
+  }
+
+  #bigShoe-mobile {
+    height: 220px;
+  }
+
+  .landingContent {
+    h1 {
+      font-size: 3rem;
+      line-height: 45px;
+    }
+
+    p{
+      margin-top: 20px;
+    }
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  //Whole landing page
+  .landing-page {
+    visibility: hidden;
+    padding-left: 150px;
+    padding-right: 150px;
+    height: 100vh;
+  }
+
+  // NavBar component
+  nav {
+    height: 15%;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+
+    #logo {
+      height: 80px;
+      width: 80px;
+    }
+
+    #discord {
+      height: 50px;
+      width: auto;
+      margin-top: 10px;
+    }
+
+    .links {
+      width: 50%;
+    }
+    ul {
+      list-style: none;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    a {
+      text-decoration: none;
+      color: white;
+
+      &:visited {
+        color: white;
+      }
+
+      &:hover {
+        color: #f4f4f4;
+      }
+    }
+
+    h4 {
+      font-weight: 300;
+      font-size: 1.3rem;
+    }
+  }
+
+  //Landing page
+
+  .landingContent {
+    margin-top: 230px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+      font-size: 5rem;
+      font-weight: 00;
+      line-height: 1;
+      margin-top: -200px;
+      margin-bottom: 50px;
+    }
+
+    p {
+      font-size: 1.3rem;
+      margin-right: 200px;
+    }
+
+    #bigShoe {
+      margin-top: -230px;
+      margin-right: -60px;
+    }
+  }
+
+  .content {
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #mouse-icon {
+    z-index: 2;
+    margin-top: 170px;
+    height: 30px;
+    width: auto;
+  }
+}
