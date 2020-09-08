@@ -33,7 +33,7 @@ const shoeForm = () => {
 
             //Processing the response
             let data = await response.json()
-          
+          setMessage('Success');
 
         } catch (error) {
             setMessage('Fail');
@@ -58,7 +58,7 @@ const shoeForm = () => {
     const routePush = () =>{
         setTimeout(() => {
             Router.push('/')
-        }, 2000);
+        }, 1000);
     }
 
     return (

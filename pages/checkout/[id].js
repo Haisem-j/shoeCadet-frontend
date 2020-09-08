@@ -1,8 +1,9 @@
-import { useRouter } from 'next/router'
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import fetch from 'isomorphic-unfetch';
-import {URL_LINK} from '../../globals'
+import { URL_LINK } from '../../globals';
 
 import CheckoutForm from '../../components/payments/CheckoutFrom';
 
@@ -10,23 +11,46 @@ const promise = loadStripe("pk_test_51HKmaBD2ROsWPjNTmw5ZB4h8LJmUAO78b1iJ1N2smoB
 
 const Checkout = ({ shoe }) => {
     const router = useRouter();
-    console.log(shoe);
+    const [message, setMessage] = useState('');
+
+    const childMessage = (m) => {
+       setMessage(m)
+    }
+
+    const paymentMessage = () =>{
+        if(message == 'IF'){
+            return (
+                <div className="message-fail">
+                    Insufficient Funds Available
+                </div>
+            )
+        }else if(message == 'DNE'){
+            return (
+                <div className="message-fail">
+                    Something went wrong with the payment
+                </div>
+            )
+        }
+    }
     return (
         <div className="checkout">
-            <Elements stripe={promise}>
-                <img src={`${URL_LINK}/shoes/${shoe.imageId}`} alt="temp"  className="checkout-image"/>
-                <CheckoutForm size={router.query.size} id={router.query.id} price={shoe.price}/>
-            </Elements>
+            {message == '' ? null : paymentMessage()}
+            <div className="stripe-payment">
+                <Elements stripe={promise}>
+                    <img src={`${URL_LINK}/shoes/${shoe.imageId}`} alt="temp" className="checkout-image" />
+                    <CheckoutForm size={router.query.size} id={router.query.id} childMessage={childMessage} shoe={shoe} />
+                </Elements>
+            </div>
         </div>
     )
 }
 
-Checkout.getInitialProps = async ({ query }) =>{
+Checkout.getInitialProps = async ({ query }) => {
     const { id } = query
     //UPDATE THIS
     const res = await fetch(`${URL_LINK}/shoes/shoe/${id}`);
     const shoe = await res.json();
-    return{
+    return {
         shoe
     }
 }

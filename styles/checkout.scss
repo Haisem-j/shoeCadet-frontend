@@ -4,10 +4,33 @@
     background-color: #e6e4e4;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
+    .stripe-payment{
+        display: flex;
+    }
+    .message-fail{
+        background-color: #d9534f;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
     .checkout-image {
         height: 50vh;
         width: auto;
+    }
+}
 
+.SuccessCheckout{
+    display: flex;
+    background-color: #e6e4e4;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+
+    h1{
+        margin-bottom: 20px;
     }
 }

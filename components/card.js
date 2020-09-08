@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link'
+import {URL_LINK} from '../globals'
 
 class Card extends React.Component {
     constructor(props) {
@@ -58,7 +59,7 @@ class Card extends React.Component {
                         </div>
                     </div>
                     <div className="picture-release">
-                        <img src={`http://localhost:5000/api/shoes/${this.props.shoe.imageId}`} alt={this.props.shoe.title} />
+                        <img src={`${URL_LINK}/shoes/${this.props.shoe.imageId}`} alt={this.props.shoe.title} />
                     </div>
                 </div>
             </>
@@ -71,7 +72,7 @@ class Card extends React.Component {
                 <div className="card">
                     <h2 className="shoe-title-release">{this.props.shoe.title}</h2>
                     <div className="picture-release">
-                        <img src={`http://localhost:5000/api/shoes/${this.props.shoe.imageId}`} alt={this.props.shoe.title} />
+                        <img src={`${URL_LINK}/shoes/${this.props.shoe.imageId}`} alt={this.props.shoe.title} />
                     </div>
                     <div className="info-top">
                         <div className="price-container">
@@ -105,7 +106,6 @@ class Card extends React.Component {
 
 
     render() {
-        console.log(this.state);
         return (
             <>
                 {this.state.width <= 768 ? this.mobile() : this.desktop()}

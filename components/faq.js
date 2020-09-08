@@ -21,15 +21,15 @@ export default function FAQ() {
             <div className="questions-container">
                 <div className="question-card">
                     <h3>Does this guarentee me a shoe?</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et odio pellentesque diam volutpat commodo sed egestas.</p>
+                    <p>Purchasing a slot does not guarentee you a shoe! What it does do is gives you a much better chance at getting a shoe. Remember you are going up against thousands of other people.</p>
                 </div>
                 <div className="question-card">
                     <h3>How will I know when my order is ready?</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et odio pellentesque diam volutpat commodo sed egestas.</p>
+                    <p>When you're order is ready you will recieve an email with instructions on how to proceed..</p>
                 </div>
                 <div className="question-card">
                     <h3>What happens once my shoe is purchased?</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et odio pellentesque diam volutpat commodo sed egestas.</p>
+                    <p>Once your shoe is purchased, you will recieve an email with your order confirmation and receipt.</p>
                 </div>
             </div>
             <h2>Don't see your question here? Ask us on discord!</h2>

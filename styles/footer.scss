@@ -1,32 +1,8 @@
-//Ipad or Tablet view
-@media only screen and (max-width: 768px) {
-}
-
-//Desktop view
-@media only screen and (min-width: 769px) {
-    .footer {
-        height: 20vh;
-        background-color: #cde8ff;
-        margin-top: -10px;
-        display: flex;
-        justify-content: space-between;
-        padding-left: 150px;
-        padding-right: 150px;
-    }
-
-    #footer-logo {
-        height: 20vh;
-        margin-top: -30px;
-    }
-
-    .contact-us {
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-        a {
-            text-decoration: none;
-            color: #0362b0;
-        }
-    }
+.footer {
+    background-color: #cde8ff;
+    margin-top: -10px;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 150px;
+    padding-right: 150px;
 }

@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Router from 'next/router';
+
 //Stripe
 import { useStripe, useElements, CardElement } from '@stripe/react-stripe-js';
 
@@ -11,6 +13,9 @@ import Typography from '@material-ui/core/Typography';
 
 //Custom components
 import CardInput from './CardInput';
+
+//Global Variable
+import { URL_LINK } from '../../globals'
 
 //Util imports
 import { makeStyles } from '@material-ui/core/styles';
@@ -60,27 +65,35 @@ export default function CheckoutForm(props) {
     const classes = useStyles();
 
     const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [loadTimer, setLoadTimer] = useState(true);
 
     const stripe = useStripe();
     const elements = useElements();
 
+    useEffect(() => {
+        setTimeout(() => {
+            setLoadTimer(false);
+        }, 1000);
+    })
     const handleSubmit = async (event) => {
         if (!stripe || !elements) {
             // Stripe.js has not yet loaded.
             // Make sure to disable form submission until Stripe.js has loaded.
             return;
         }
-        let tEmail = {
-            email: email
+        let reqBody = {
+            email: email,
+            name: name,
+            shoe: props.shoe
         }
-        console.log(tEmail);
 
-        const res = await fetch('http://localhost:5000/pay', {
+        const res = await fetch(`${URL_LINK}/payment/pay`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             },
-            body: JSON.stringify(tEmail)
+            body: JSON.stringify(reqBody)
         })
 
         let data = await res.json();
@@ -96,11 +109,17 @@ export default function CheckoutForm(props) {
 
         if (result.error) {
             // Show error to your customer (e.g., insufficient funds)
+            console.log(result);
             console.log(result.error.message);
+            if (result.error.decline_code === 'insufficient_funds') {
+                props.childMessage('IF')
+            } else {
+                props.childMessage('DNE')
+            }
         } else {
             // The payment has been processed!
             if (result.paymentIntent.status === 'succeeded') {
-                console.log('Money in the bank!');
+                Router.push(`/successCheckout/${props.id}`)
                 // Show a success message to your customer
                 // There's a risk of the customer closing the window before callback
                 // execution. Set up a webhook or plugin to listen for the
@@ -110,48 +129,59 @@ export default function CheckoutForm(props) {
         }
     };
 
-    return (
-        <Card className={classes.root}>
-            <div className={classes.titleTop}>
-                <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    Air Force 1
+    if (loadTimer) {
+        return (
+            <>
+            </>
+        )
+    } else {
+
+
+        return (
+            <Card className={classes.root}>
+                <div className={classes.titleTop}>
+                    <Typography className={classes.title} color="textSecondary" gutterBottom>
+                    {props.shoe.title}
                 </Typography>
-                <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    Size {props.size}
-                </Typography>
-            </div>
-            <Typography variant="h4" component="h2" className={classes.title2}>
-                ${props.price}
-            </Typography>
-            <CardContent className={classes.content}>
-                <TextField
-                    label="Full Name"
-                    margin='normal'
-                    variant='outlined'
-                    required
-                />
-                <TextField
-                    className={classes.textBt}
-                    label="Email"
-                    id='outlined-email-input'
-                    helperText={`Your receipt will be sent to this email`}
-                    margin='normal'
-                    variant='outlined'
-                    type='email'
-                    required
-                    value={email}
-                    onChange={e => {
-                        setEmail(e.target.value)
-                    }}
-                    fullwidth
-                />
-                <CardInput />
-                <div className={classes.div}>
-                    <Button variant="contained" color="primary" fullWidth className={classes.button} onClick={handleSubmit}>
-                        Pay
-                    </Button>
+                    <Typography className={classes.title} color="textSecondary" gutterBottom>
+                        Size {props.size}
+                    </Typography>
                 </div>
-            </CardContent>
-        </Card>
-    );
+                <Typography variant="h4" component="h2" className={classes.title2}>
+                    ${props.shoe.price}
+                </Typography>
+                <CardContent className={classes.content}>
+                    <TextField
+                        label="Full Name"
+                        margin='normal'
+                        variant='outlined'
+                        required
+                        onChange={e => {
+                            setName(e.target.value)
+                        }}
+                    />
+                    <TextField
+                        className={classes.textBt}
+                        label="Email"
+                        id='outlined-email-input'
+                        helperText={`Your receipt will be sent to this email`}
+                        margin='normal'
+                        variant='outlined'
+                        type='email'
+                        required
+                        value={email}
+                        onChange={e => {
+                            setEmail(e.target.value)
+                        }}
+                    />
+                    <CardInput />
+                    <div className={classes.div}>
+                        <Button variant="contained" color="primary" fullWidth className={classes.button} onClick={handleSubmit}>
+                            Pay
+                    </Button>
+                    </div>
+                </CardContent>
+            </Card>
+        );
+    }
 }

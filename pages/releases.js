@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react';
 import fetch from 'isomorphic-unfetch';
 import NavWrapper from '../components/NavWrapper';
 import Card from '../components/card';
+import Footer from '../components/footer';
 import { URL_LINK } from '../globals'
 
 function releases({ shoes }) {
@@ -11,13 +12,11 @@ function releases({ shoes }) {
     const [count, setCount] = useState(0);
     const [width, setWidth] = useState(0);
     const [cardWidth, setCardWidth] = useState(0);
-    // const [translate, setTranslate] = useState(0);
+
 
     useEffect(() => {
         setWidth(card.current.offsetWidth);
         caroselSlide.current.style.width = `${shoes.length}00%`;
-        console.log(count);
-        console.log(width);
     });
 
     const prevButton = () => {
@@ -26,7 +25,7 @@ function releases({ shoes }) {
         if (count > 0) {
             caroselSlide.current.style.transition = "transform 0.4s ease-in-out";
             caroselSlide.current.style.transform = `translateX(${temp + width}px)`
-            setCount(count -1);
+            setCount(count - 1);
         }
     }
 
@@ -63,6 +62,9 @@ function releases({ shoes }) {
                     </div>
                 </div>
             </div>
+            <svg className="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#CDE8FF" fillOpacity="1" d="M0,224L60,192C120,160,240,96,360,85.3C480,75,600,117,720,149.3C840,181,960,203,1080,181.3C1200,160,1320,96,1380,64L1440,32L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>
+            <Footer />
+            
         </div>
     )
 }
